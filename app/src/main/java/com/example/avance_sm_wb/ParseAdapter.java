@@ -1,6 +1,7 @@
 package com.example.avance_sm_wb;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,11 @@ public class ParseAdapter extends RecyclerView.Adapter<ParseAdapter.ViewHolder> 
         ParseItem currentItem = parseItems.get(position);
 
         holder.textView.setText(currentItem.getTitle());
-        Picasso.get().load(currentItem.getImgUrl()).into(holder.imageView);
 
+        String imageUrl = currentItem.getImgUrl();
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Picasso.get().load(imageUrl).into(holder.imageView);
+        }
     }
 
     @Override
